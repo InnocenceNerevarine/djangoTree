@@ -1,0 +1,13 @@
+ {% load menu_tags %}
+    <div class="menu">
+      <ul>
+    {% for item in menu_items %}
+        <li {% if item.has_active_child %}class="active"{% endif %}>
+            <a href="{{ item.url }}">{{ item.title }}</a>
+            {% if item.has_active_child %}
+                {% draw_menu item.menu_name current_url parent_id=item.id %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+ </div>
